@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:model="using:BasicDataTemplateSample.Models"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="350"
         x:Class="BasicDataTemplateSample.Views.MainWindow"
 		Height="350"
 		Width="350"
@@ -19,9 +19,9 @@
 
 	<!-- remember to add the needed namespace model -->
 	<!-- xmlns:model="using:BasicDataTemplateSample.Models" -->
-	<Window.DataTemplates>
+	<Window.Resources>
 		<!--  Add a DataTemplate for any Person  -->
-		<DataTemplate DataType="model:Person">
+		<DataTemplate x:Key="My.DataTemplates.Person" DataType="model:Person">
 			<Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
 				<TextBlock Grid.Row="0" Text="First Name: " />
 				<TextBlock Grid.Row="0"
@@ -44,7 +44,7 @@
 						   Text="{Binding Sex}" />
 			</Grid>
 		</DataTemplate>
-	</Window.DataTemplates>
+	</Window.Resources>
 
 	<ListBox Items="{Binding People}" />
 

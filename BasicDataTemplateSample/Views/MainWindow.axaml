@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BasicDataTemplateSample.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:model="using:BasicDataTemplateSample.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="BasicDataTemplateSample.Views.MainWindow"
+		Height="350"
+		Width="350"
+        x:CompileBindings="true"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="BasicDataTemplateSample">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<!-- remember to add the needed namespace model -->
+	<!-- xmlns:model="using:BasicDataTemplateSample.Models" -->
+	<Window.DataTemplates>
+		<!--  Add a DataTemplate for any Person  -->
+		<DataTemplate DataType="model:Person">
+			<Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
+				<TextBlock Grid.Row="0" Text="First Name: " />
+				<TextBlock Grid.Row="0"
+						   Grid.Column="1"
+						   Text="{Binding FirstName}" />
+
+				<TextBlock Grid.Row="1" Text="Last Name: " />
+				<TextBlock Grid.Row="1"
+						   Grid.Column="1"
+						   Text="{Binding LastName}" />
+
+				<TextBlock Grid.Row="2" Text="Age: " />
+				<TextBlock Grid.Row="2"
+						   Grid.Column="1"
+						   Text="{Binding Age, StringFormat={}{0} years}" />
+
+				<TextBlock Grid.Row="3" Text="Sex: " />
+				<TextBlock Grid.Row="3"
+						   Grid.Column="1"
+						   Text="{Binding Sex}" />
+			</Grid>
+		</DataTemplate>
+	</Window.DataTemplates>
+
+	<ListBox Items="{Binding People}" />
+
+</Window>
